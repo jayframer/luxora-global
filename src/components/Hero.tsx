@@ -26,31 +26,37 @@ export const Hero: React.FC<{ onExploreProducts: () => void; className?: string 
       <BackgroundIcons icons={heroIcons} />
       <div
         key={sectionKey}
-        className="max-w-5xl mx-auto px-6 md:px-12 w-full text-center z-10 mb-20 animate-heroReveal gpu-accelerated"
+        className="max-w-5xl mx-auto px-6 md:px-12 w-full text-center z-10 mb-20 gpu-accelerated"
       >
         <div className="z-10">
-            <img 
-              src={theme === 'dark' ? logoDark : logo} 
-              alt="Luxora Global" 
-              className="h-36 w-auto mx-auto mb-8 object-contain animate-fadeIn hero-delay-2"
-            />
+            <div className="mb-8 hero-logo-reveal" style={{ animationDelay: '0.1s' }}>
+              <img 
+                src={theme === 'dark' ? logoDark : logo} 
+                alt="Luxora Global" 
+                className="h-36 w-auto mx-auto object-contain"
+              />
+            </div>
 
-            <h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] mb-6 text-light-text dark:text-dark-text animate-fadeUp hero-delay-1 gpu-accelerated"
-            >
-              Wholesale Products
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05] mb-6 text-light-text dark:text-dark-text gpu-accelerated">
+              <span className="hero-line-reveal">
+                <span style={{ animationDelay: '0.2s' }}>Wholesale Products</span>
+              </span>
               <br />
-              Built for Retailers.
+              <span className="hero-line-reveal">
+                <span style={{ animationDelay: '0.35s' }}>Built for Retailers.</span>
+              </span>
             </h1>
 
             <p
-              className="text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed text-light-text dark:text-dark-text animate-fadeUp hero-delay-3"
+              className="text-base md:text-lg mb-10 max-w-xl mx-auto leading-relaxed text-light-text dark:text-dark-text animate-fadeUp"
+              style={{ animationDelay: '0.5s' }}
             >
               Practical wholesale products across biodegradable packaging, kitchenware, and automotive — with simple inquiry-based sourcing.
             </p>
 
             <div
-              className="flex flex-wrap justify-center gap-4 animate-fadeUp hero-delay-4"
+              className="flex flex-wrap justify-center gap-4 animate-fadeUp"
+              style={{ animationDelay: '0.65s' }}
             >
               <a
                 href="#products"
