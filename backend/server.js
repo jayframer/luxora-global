@@ -246,35 +246,13 @@ app.get('/api/inquiries/export', (req, res) => {
   }
 });
 
-const DIST_DIR = join(process.cwd(), 'dist');
-const PUBLIC_DIR = join(process.cwd(), 'public');
+const ROOT_DIR = join(__dirname, '..');
+const DIST_DIR = join(ROOT_DIR, 'dist');
+const PUBLIC_DIR = join(ROOT_DIR, 'public');
 
 app.use(express.static(DIST_DIR));
+app.use(express.static(PUBLIC_DIR));
 app.use('/logo.png', express.static(join(__dirname, 'logo.png')));
-
-app.get('/googlee9ec779f9ed407e4.html', (req, res) => {
-  res.sendFile(join(DIST_DIR, 'googlee9ec779f9ed407e4.html'));
-});
-
-app.get('/sitemap.xml', (req, res) => {
-  const distPath = join(DIST_DIR, 'sitemap.xml');
-  const publicPath = join(PUBLIC_DIR, 'sitemap.xml');
-  if (existsSync(distPath)) {
-    res.sendFile(distPath);
-  } else {
-    res.sendFile(publicPath);
-  }
-});
-
-app.get('/robots.txt', (req, res) => {
-  const distPath = join(DIST_DIR, 'robots.txt');
-  const publicPath = join(PUBLIC_DIR, 'robots.txt');
-  if (existsSync(distPath)) {
-    res.sendFile(distPath);
-  } else {
-    res.sendFile(publicPath);
-  }
-});
 
 app.get('/admin', (req, res) => {
   res.sendFile(ADMIN_PAGE);
