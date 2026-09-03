@@ -1,12 +1,26 @@
-import { useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-export function useScrollReveal(options?: { once?: boolean; margin?: string }) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, {
-    once: options?.once ?? true,
-    margin: (options?.margin ?? '0px 0px -60px 0px') as `${number}px ${number}px ${number}px ${number}px`,
-  });
+export function useScrollReveal(threshold = 0.15) {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(el);
+        }
+      },
+      { threshold }
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [threshold]);
 
   return { ref, isInView };
 }

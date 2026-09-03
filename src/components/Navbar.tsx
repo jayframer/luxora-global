@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ThemeToggle } from './ThemeToggle';
 import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useNavClick } from '../context/NavClickContext';
 import { useTheme } from '../context/ThemeContext';
 import logo from '../assets/logo.png';
@@ -76,7 +77,7 @@ export const Navbar: React.FC = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-        ? 'bg-light-bg/80 dark:bg-dark-bg/80 backdrop-blur-lg border-b border-light-border/50 dark:border-dark-border/50 shadow-[0_4px_16px_rgba(0,0,0,0.06)] py-2'
+        ? 'bg-light-bg/90 dark:bg-dark-bg/90 border-b border-light-border/50 dark:border-dark-border/50 shadow-[0_4px_16px_rgba(0,0,0,0.06)] py-2'
         : 'bg-transparent py-3'
         }`}
     >
@@ -101,13 +102,15 @@ export const Navbar: React.FC = () => {
           </div>
           <div className="flex items-center space-x-4">
             <ThemeToggle />
-            <a
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               href="#contact"
               onClick={(e) => handleNavClick(e, '#contact')}
-              className="text-sm font-medium border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg px-5 py-2 rounded-full transition-all duration-300 hover:scale-105 active:scale-95"
+              className="text-sm font-medium border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg px-5 py-2 rounded-full transition-colors duration-300"
             >
               Send Inquiry
-            </a>
+            </motion.a>
           </div>
         </div>
 
@@ -119,29 +122,37 @@ export const Navbar: React.FC = () => {
         </div>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="absolute top-full left-0 w-full bg-light-bg/90 dark:bg-dark-bg/90 backdrop-blur-lg border-b border-light-border dark:border-dark-border shadow-lg md:hidden animate-fadeUp">
-          <div className="flex flex-col px-6 py-4 space-y-4">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-lg font-medium py-2 border-b border-light-border/50 dark:border-dark-border/50 last:border-0"
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            className="absolute top-full left-0 w-full bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border shadow-lg md:hidden"
+          >
+            <div className="flex flex-col px-6 py-4 space-y-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-lg font-medium py-2 border-b border-light-border/50 dark:border-dark-border/50 last:border-0"
+                >
+                  {link.name}
+                </a>
+              ))}
+              <motion.a
+                whileTap={{ scale: 0.95 }}
+                href="#contact"
+                onClick={(e) => handleNavClick(e, '#contact')}
+                className="text-center text-sm font-medium border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg px-5 py-3 rounded-full mt-4 transition-colors duration-300"
               >
-                {link.name}
-              </a>
-            ))}
-            <a
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
-              className="text-center text-sm font-medium border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg px-5 py-3 rounded-full mt-4 transition-colors duration-300"
-            >
-              Send Inquiry
-            </a>
-          </div>
-        </div>
-      )}
+                Send Inquiry
+              </motion.a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
