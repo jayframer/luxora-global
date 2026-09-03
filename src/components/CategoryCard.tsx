@@ -17,7 +17,6 @@ export const CategoryCard: React.FC<CategoryCardProps> = React.memo(({ category,
         <img
           src={category.image}
           alt={category.name}
-          loading="lazy"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
       </div>
