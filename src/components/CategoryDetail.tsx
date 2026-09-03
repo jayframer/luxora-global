@@ -15,7 +15,7 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
   return (
     <div className="fixed inset-0 z-[60] bg-light-bg dark:bg-dark-bg overflow-y-auto animate-slideUp">
       <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
-        <div className="flex justify-between items-center mb-12">
+        <div className="flex justify-between items-center mb-12 animate-categoryReveal">
           <button
             onClick={onClose}
             className="flex items-center text-sm font-medium opacity-70 hover:opacity-100 transition-opacity"
@@ -31,7 +31,7 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
           </button>
         </div>
 
-        <div className="mb-16 max-w-3xl">
+        <div className="mb-16 max-w-3xl animate-categoryReveal category-delay-1">
           <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">{category.name}</h1>
           <p className="text-xl opacity-80 leading-relaxed">{category.description}</p>
         </div>
@@ -56,11 +56,11 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
           ))}
         </div>
         
-        <div className="mt-20 text-center">
+        <div className="mt-20 text-center animate-categoryReveal category-delay-3">
           <p className="text-lg opacity-70 mb-6">Need a specific product in this category not listed here?</p>
           <button
             onClick={() => onOpenInquiry()}
-            className="px-8 py-4 border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg rounded-full font-medium transition-colors duration-300"
+            className="px-8 py-4 border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg rounded-full font-medium transition-all duration-300 hover:scale-105 active:scale-95"
           >
             Send Custom Inquiry
           </button>
@@ -73,14 +73,13 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
 const ProductCard: React.FC<{ product: Product; index: number; onInquire: () => void }> = ({ product, index, onInquire }) => {
   return (
     <div
-      className="bg-light-card dark:bg-dark-card rounded-3xl overflow-hidden border border-light-border dark:border-white/50 flex flex-col h-full animate-fadeUp"
-      style={{ animationDelay: `${index * 60}ms` }}
+      className="bg-light-card dark:bg-dark-card rounded-3xl overflow-hidden border border-light-border dark:border-white/50 flex flex-col h-full animate-categoryReveal"
+      style={{ animationDelay: `${0.3 + index * 0.08}s` }}
     >
       <div className="relative h-72 bg-light-border dark:bg-dark-border overflow-hidden">
         <img
           src={product.image}
           alt={product.name}
-          loading="lazy"
           className="w-full h-full object-cover"
         />
       </div>
@@ -89,7 +88,7 @@ const ProductCard: React.FC<{ product: Product; index: number; onInquire: () => 
         <p className="text-xs opacity-70 mb-4 flex-1">{product.description}</p>
         <button
           onClick={onInquire}
-          className="w-full py-3 border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg rounded-xl font-medium transition-colors duration-300"
+          className="w-full py-3 border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg rounded-xl font-medium transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
         >
           Send Inquiry
         </button>
