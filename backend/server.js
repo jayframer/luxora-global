@@ -247,6 +247,7 @@ app.get('/api/inquiries/export', (req, res) => {
 });
 
 const DIST_DIR = join(__dirname, '..', 'dist');
+const PUBLIC_DIR = join(__dirname, '..', 'public');
 
 app.use(express.static(DIST_DIR));
 app.use('/logo.png', express.static(join(__dirname, 'logo.png')));
@@ -256,11 +257,11 @@ app.get('/googlee9ec779f9ed407e4.html', (req, res) => {
 });
 
 app.get('/sitemap.xml', (req, res) => {
-  res.sendFile(join(DIST_DIR, 'sitemap.xml'));
+  res.sendFile(join(PUBLIC_DIR, 'sitemap.xml'));
 });
 
 app.get('/robots.txt', (req, res) => {
-  res.sendFile(join(DIST_DIR, 'robots.txt'));
+  res.sendFile(join(PUBLIC_DIR, 'robots.txt'));
 });
 
 app.get('/admin', (req, res) => {
