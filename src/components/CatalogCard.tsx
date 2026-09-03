@@ -14,7 +14,7 @@ interface CatalogCardProps {
   onBrowse: () => void;
 }
 
-export const CatalogCard: React.FC<CatalogCardProps> = ({ product, index, onBrowse }) => {
+export const CatalogCard: React.FC<CatalogCardProps> = ({ product, index }) => {
   const handleDownload = () => {
     const url = product.catalogUrl || '/catalog/industrial-components-catalog.pdf';
     const fileName = url.split('/').pop() || 'catalog.pdf';
