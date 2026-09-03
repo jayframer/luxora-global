@@ -251,6 +251,10 @@ const DIST_DIR = join(__dirname, '..', 'dist');
 app.use(express.static(DIST_DIR));
 app.use('/logo.png', express.static(join(__dirname, 'logo.png')));
 
+app.get('/googlee9ec779f9ed407e4.html', (req, res) => {
+  res.sendFile(join(DIST_DIR, 'googlee9ec779f9ed407e4.html'));
+});
+
 app.get('/admin', (req, res) => {
   res.sendFile(ADMIN_PAGE);
 });
