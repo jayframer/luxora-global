@@ -93,7 +93,7 @@ export const categories: Category[] = [
         id: "kw-5",
         name: "Premium Square Plastic Water Bottle",
         description: "Sleek and durable bottle for everyday use. Perfect for beverages, storage, and kitchen organization.",
-        image: "/images/bottle.jpeg",
+        image: "/images/bottle.png",
         categoryId: "kitchenware"
       },
       {
