@@ -255,6 +255,14 @@ app.get('/googlee9ec779f9ed407e4.html', (req, res) => {
   res.sendFile(join(DIST_DIR, 'googlee9ec779f9ed407e4.html'));
 });
 
+app.get('/sitemap.xml', (req, res) => {
+  res.sendFile(join(DIST_DIR, 'sitemap.xml'));
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.sendFile(join(DIST_DIR, 'robots.txt'));
+});
+
 app.get('/admin', (req, res) => {
   res.sendFile(ADMIN_PAGE);
 });
