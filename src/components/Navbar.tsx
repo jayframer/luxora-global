@@ -82,36 +82,35 @@ export const Navbar: React.FC = () => {
         }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center relative">
-        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-5">
+        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-5 shrink-0">
           <img src={theme === 'dark' ? logoDark : logo} alt="Luxora Global Logo" style={{ height: '60px', width: '60px' }} className="object-contain" />
           <span className="text-lg font-bold uppercase">Luxora Global</span>
         </a>
 
-        <div className="hidden md:flex items-center space-x-8">
-          <div className="flex space-x-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`nav-link text-sm font-medium opacity-80 hover:opacity-100 transition-opacity ${activeSection === link.href ? 'nav-link--active' : ''}`}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-          <div className="flex items-center space-x-4">
-            <ThemeToggle />
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href="#contact"
-              onClick={(e) => handleNavClick(e, '#contact')}
-              className="text-sm font-medium border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg px-5 py-2 rounded-full transition-colors duration-300"
+        <div className="hidden md:flex items-center justify-center flex-1 mx-8 space-x-8">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
+              className={`nav-link text-sm font-medium opacity-80 hover:opacity-100 transition-opacity ${activeSection === link.href ? 'nav-link--active' : ''}`}
             >
-              Send Inquiry
-            </motion.a>
-          </div>
+              {link.name}
+            </a>
+          ))}
+        </div>
+
+        <div className="hidden md:flex items-center space-x-4 shrink-0">
+          <ThemeToggle />
+          <motion.a
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            href="#contact"
+            onClick={(e) => handleNavClick(e, '#contact')}
+            className="text-sm font-medium border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg px-5 py-2 rounded-full transition-colors duration-300"
+          >
+            Send Inquiry
+          </motion.a>
         </div>
 
         <div className="md:hidden flex items-center space-x-4">
