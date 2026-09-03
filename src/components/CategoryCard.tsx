@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import type { Category } from '../data/categories';
 
@@ -10,9 +9,8 @@ interface CategoryCardProps {
 
 export const CategoryCard: React.FC<CategoryCardProps> = React.memo(({ category, onClick }) => {
   return (
-    <motion.div
-      whileHover={{ y: -4 }}
-      className="product-card group cursor-pointer flex flex-col bg-light-card dark:bg-dark-card rounded-3xl overflow-hidden border border-light-border dark:border-dark-border hover:border-light-text dark:hover:border-dark-text hover:border-[2.5px] transition-all duration-300 h-full"
+    <div
+      className="product-card group cursor-pointer flex flex-col bg-light-card dark:bg-dark-card rounded-3xl overflow-hidden border border-light-border dark:border-dark-border hover:border-light-text dark:hover:border-dark-text hover:border-[2.5px] transition-all duration-300 h-full hover:-translate-y-1"
       onClick={onClick}
     >
       <div className="relative h-56 shrink-0 overflow-hidden bg-light-border dark:bg-dark-border">
@@ -37,6 +35,6 @@ export const CategoryCard: React.FC<CategoryCardProps> = React.memo(({ category,
           <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 });

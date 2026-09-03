@@ -121,4 +121,85 @@
   border-width: 2.5px;
 }
 
+/* Performance animations - GPU accelerated */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes heroReveal {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.25s ease-out both;
+  will-change: opacity;
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.45s ease-out both;
+  will-change: opacity, transform;
+}
+
+.animate-slideUp {
+  animation: slideUp 0.35s cubic-bezier(0.32, 0.72, 0, 1) both;
+  will-change: opacity, transform;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.3s cubic-bezier(0.32, 0.72, 0, 1) both;
+  will-change: opacity, transform;
+}
+
+.animate-heroReveal {
+  animation: heroReveal 0.5s ease-out both;
+  will-change: opacity, transform;
+}
+
+/* Stagger delays for hero elements */
+.hero-delay-1 { animation-delay: 0.05s; }
+.hero-delay-2 { animation-delay: 0.1s; }
+.hero-delay-3 { animation-delay: 0.2s; }
+.hero-delay-4 { animation-delay: 0.3s; }
+
 

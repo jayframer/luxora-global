@@ -1,27 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useNavClick } from '../context/NavClickContext';
 import { BackgroundIcons, processIcons } from './BackgroundIcons';
-
-const stepVariants = {
-  hidden: { opacity: 0, y: 36 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.6,
-      ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number],
-    },
-  },
-};
-
-const lineVariants = {
-  hidden: { scaleX: 0, originX: 0 },
-  visible: {
-    scaleX: 1,
-    transition: { duration: 1, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] },
-  },
-};
 
 export const ProcessSection: React.FC<{ className?: string }> = ({ className }) => {
   const { navClickKeys } = useNavClick();
@@ -49,14 +28,9 @@ export const ProcessSection: React.FC<{ className?: string }> = ({ className }) 
     <section id="process" className={`relative py-24 px-6 md:px-12 bg-light-bg dark:bg-dark-bg overflow-hidden ${className || ''}`}>
       <BackgroundIcons icons={processIcons} />
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <div
           key={sectionKey}
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-          className="mb-16 will-change-transform"
-          style={{ transform: 'translateZ(0)' }}
+          className="mb-16 animate-fadeUp gpu-accelerated"
         >
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
             How It Works
@@ -64,44 +38,36 @@ export const ProcessSection: React.FC<{ className?: string }> = ({ className }) 
           <p className="text-lg opacity-70">
             A simple process from inquiry to wholesale supply.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
+        <div
           key={`steps-${sectionKey}`}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          transition={{ staggerChildren: 0.18 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-12 relative"
         >
-          <motion.div
-            variants={lineVariants}
-            className="hidden md:block absolute top-8 left-0 w-full h-[1px] bg-light-border dark:bg-dark-border z-0"
+          <div
+            className="hidden md:block absolute top-8 left-0 w-full h-[1px] bg-light-border dark:bg-dark-border z-0 animate-fadeIn"
+            style={{ animationDelay: '300ms' }}
           />
 
           {steps.map((step, index) => (
-            <motion.div
+            <div
               key={index}
-              variants={stepVariants}
-              className="relative z-10"
+              className="relative z-10 animate-fadeUp"
+              style={{ animationDelay: `${index * 180 + 300}ms` }}
             >
-              <motion.div
-                initial={{ scale: 0, rotate: -15 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.5, delay: index * 0.18 + 0.3, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-                className="w-16 h-16 rounded-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border flex items-center justify-center text-xl font-bold mb-6 will-change-transform"
-                style={{ transform: 'translateZ(0)' }}
+              <div
+                className="w-16 h-16 rounded-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border flex items-center justify-center text-xl font-bold mb-6 gpu-accelerated animate-scaleIn"
+                style={{ animationDelay: `${index * 180 + 300}ms` }}
               >
                 {step.num}
-              </motion.div>
+              </div>
               <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
               <p className="text-sm opacity-70 leading-relaxed">
                 {step.desc}
               </p>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
