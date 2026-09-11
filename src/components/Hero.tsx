@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavClick } from '../context/NavClickContext';
 import { BackgroundIcons, heroIcons } from './BackgroundIcons';
@@ -10,6 +10,13 @@ export const Hero: React.FC<{ onExploreProducts: () => void; className?: string 
   const { navClickKeys } = useNavClick();
   const { theme } = useTheme();
   const sectionKey = navClickKeys['home'] || 0;
+
+  useEffect(() => {
+    const img1 = new Image();
+    img1.src = logo;
+    const img2 = new Image();
+    img2.src = logoDark;
+  }, []);
 
   const scrollToProducts = useCallback((e: React.MouseEvent) => {
     e.preventDefault();

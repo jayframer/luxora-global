@@ -22,6 +22,13 @@ export const Navbar: React.FC = () => {
   const { triggerNavClick } = useNavClick();
   const { theme } = useTheme();
 
+  useEffect(() => {
+    const img1 = new Image();
+    img1.src = logo;
+    const img2 = new Image();
+    img2.src = logoDark;
+  }, []);
+
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
   }, []);
