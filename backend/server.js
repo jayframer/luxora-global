@@ -254,6 +254,24 @@ app.use(express.static(DIST_DIR));
 app.use(express.static(PUBLIC_DIR));
 app.use('/logo.png', express.static(join(__dirname, 'logo.png')));
 
+app.get('/robots.txt', (req, res) => {
+  const robotsPath = join(PUBLIC_DIR, 'robots.txt');
+  if (existsSync(robotsPath)) {
+    res.type('text/plain').sendFile(robotsPath);
+  } else {
+    res.type('text/plain').send('User-agent: *\nAllow: /\n');
+  }
+});
+
+app.get('/sitemap.xml', (req, res) => {
+  const sitemapPath = join(PUBLIC_DIR, 'sitemap.xml');
+  if (existsSync(sitemapPath)) {
+    res.type('application/xml').sendFile(sitemapPath);
+  } else {
+    res.status(404).end();
+  }
+});
+
 app.get('/admin', (req, res) => {
   res.sendFile(ADMIN_PAGE);
 });
