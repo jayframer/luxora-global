@@ -3,4 +3,4 @@ Allow: /
 Disallow: /admin
 Disallow: /api/
 
-Sitemap: https://luxoraglobal.co.in/sitemap.xml
+Sitemap: https://www.luxoraglobal.co.in/sitemap.xml
