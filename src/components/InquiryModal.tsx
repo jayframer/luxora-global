@@ -3,6 +3,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react';
 import { categories } from '../data/categories';
 
+const API_URL = import.meta.env.VITE_API_URL || '';
+
 interface InquiryModalProps {
   isOpen: boolean;
   onClose: () => void;
@@ -64,7 +66,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
     setErrorMessage('');
     
     try {
-      const response = await fetch('/api/inquiries', {
+      const response = await fetch(`${API_URL}/api/inquiries`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
