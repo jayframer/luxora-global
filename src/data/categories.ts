@@ -149,6 +149,15 @@ export const categories: Category[] = [
         categoryId: "automotive",
         type: "catalog",
         catalogUrl: "/catalog/LuxoraGlobal_Industrial.pdf"
+      },
+      {
+        id: "auto-tractor-catalog",
+        name: "Tractor Parts",
+        description: "Explore 40+ tractor parts. Browse or download our complete catalog to find exactly what you need.",
+        image: "/images/automotive_category_1787480232455.jpg",
+        categoryId: "automotive",
+        type: "catalog",
+        catalogUrl: "/catalog/LuxoraGlobal_Tractorparts.pdf"
       }
     ]
   }

@@ -88,10 +88,10 @@ export const Navbar: React.FC = () => {
         : 'bg-transparent py-3'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center relative">
-        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-5 shrink-0">
-          <img src={theme === 'dark' ? logoDark : logo} alt="Luxora Global Logo" style={{ height: '60px', width: '60px' }} className="object-contain" />
-          <span className="text-lg font-bold uppercase">Luxora Global</span>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center relative">
+        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-3 sm:gap-5 shrink-0">
+          <img src={theme === 'dark' ? logoDark : logo} alt="Luxora Global Logo" style={{ height: '44px', width: '44px' }} className="object-contain sm:h-[60px] sm:w-[60px]" />
+          <span className="text-sm sm:text-lg font-bold uppercase">Luxora Global</span>
         </a>
 
         <div className="hidden md:flex items-center justify-center flex-1 mx-8 space-x-8">
@@ -120,7 +120,7 @@ export const Navbar: React.FC = () => {
           </motion.a>
         </div>
 
-        <div className="md:hidden flex items-center space-x-4">
+        <div className="md:hidden flex items-center gap-3 shrink-0">
           <ThemeToggle />
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
