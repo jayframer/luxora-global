@@ -69,7 +69,7 @@ function App() {
         <RevealSection delay={0.1}>
           <Footer className="content-auto" />
         </RevealSection>
-        
+
         <CategoryDetail
           category={selectedCategory}
           onClose={handleCloseCategory}

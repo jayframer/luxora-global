@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ArrowLeft } from 'lucide-react';
 import type { Category, Product } from '../data/categories';
 import { CatalogCard } from './CatalogCard';
+import { CARD_SIZES } from '../data/categories';
 
 interface CategoryDetailProps {
   category: Category | null;
@@ -99,9 +100,14 @@ const ProductCard: React.FC<{ product: Product; index: number; onInquire: () => 
       >
         <div className="relative h-72 bg-light-border dark:bg-dark-border overflow-hidden">
           <img
-            src={product.image}
+            src={product.image.src}
+            srcSet={product.image.srcSet}
+            sizes={CARD_SIZES}
+            width={product.image.width}
+            height={product.image.height}
             alt={product.name}
             loading="lazy"
+            decoding="async"
             className="w-full h-full object-cover"
           />
         </div>

@@ -1,22 +1,15 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 import { motion } from 'framer-motion';
 import { useNavClick } from '../context/NavClickContext';
 import { BackgroundIcons, heroIcons } from './BackgroundIcons';
 import { useTheme } from '../context/ThemeContext';
-import logo from '../assets/logo.png';
-import logoDark from '../assets/logo-dark.png';
+import logo from '../assets/logo.optimized.png';
+import logoDark from '../assets/logo-dark.optimized.png';
 
 export const Hero: React.FC<{ onExploreProducts: () => void; className?: string }> = ({ onExploreProducts, className }) => {
   const { navClickKeys } = useNavClick();
   const { theme } = useTheme();
   const sectionKey = navClickKeys['home'] || 0;
-
-  useEffect(() => {
-    const img1 = new Image();
-    img1.src = logo;
-    const img2 = new Image();
-    img2.src = logoDark;
-  }, []);
 
   const scrollToProducts = useCallback((e: React.MouseEvent) => {
     e.preventDefault();
@@ -41,9 +34,14 @@ export const Hero: React.FC<{ onExploreProducts: () => void; className?: string 
         style={{ transform: 'translateZ(0)' }}
       >
         <div className="z-10">
-            <motion.img 
-              src={theme === 'dark' ? logoDark : logo} 
-              alt="Luxora Global" 
+            <motion.img
+              src={theme === 'dark' ? logoDark : logo}
+              alt="Luxora Global"
+              width={theme === 'dark' ? 276 : 261}
+              height={221}
+              loading="eager"
+              decoding="async"
+              fetchPriority="high"
               className="h-36 w-auto mx-auto mb-8 object-contain"
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}

@@ -4,8 +4,8 @@ import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavClick } from '../context/NavClickContext';
 import { useTheme } from '../context/ThemeContext';
-import logo from '../assets/logo.png';
-import logoDark from '../assets/logo-dark.png';
+import logo from '../assets/logo.optimized.png';
+import logoDark from '../assets/logo-dark.optimized.png';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -21,13 +21,6 @@ export const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState('#home');
   const { triggerNavClick } = useNavClick();
   const { theme } = useTheme();
-
-  useEffect(() => {
-    const img1 = new Image();
-    img1.src = logo;
-    const img2 = new Image();
-    img2.src = logoDark;
-  }, []);
 
   const handleScroll = useCallback(() => {
     setScrolled(window.scrollY > 20);
@@ -90,7 +83,17 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center relative">
         <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-3 sm:gap-5 shrink-0">
-          <img src={theme === 'dark' ? logoDark : logo} alt="Luxora Global Logo" style={{ height: '44px', width: '44px' }} className="object-contain sm:h-[60px] sm:w-[60px]" />
+          <img
+            src={theme === 'dark' ? logoDark : logo}
+            alt="Luxora Global Logo"
+            width={theme === 'dark' ? 276 : 261}
+            height={221}
+            loading="eager"
+            decoding="async"
+            fetchPriority="high"
+            style={{ height: '44px', width: '44px' }}
+            className="object-contain sm:h-[60px] sm:w-[60px]"
+          />
           <span className="text-sm sm:text-lg font-bold uppercase">Luxora Global</span>
         </a>
 

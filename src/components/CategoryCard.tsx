@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import type { Category } from '../data/categories';
+import { CARD_SIZES } from '../data/categories';
 
 interface CategoryCardProps {
   category: Category;
@@ -17,9 +18,14 @@ export const CategoryCard: React.FC<CategoryCardProps> = React.memo(({ category,
     >
       <div className="relative h-56 shrink-0 overflow-hidden bg-light-border dark:bg-dark-border">
         <img
-          src={category.image}
+          src={category.image.src}
+          srcSet={category.image.srcSet}
+          sizes={CARD_SIZES}
+          width={category.image.width}
+          height={category.image.height}
           alt={category.name}
           loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"
         />
       </div>

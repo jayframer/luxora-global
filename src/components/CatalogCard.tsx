@@ -1,15 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Download } from 'lucide-react';
+import type { Product } from '../data/categories';
 
 interface CatalogCardProps {
-  product: {
-    id: string;
-    name: string;
-    description: string;
-    image: string;
-    catalogUrl?: string;
-  };
+  product: Product;
   index: number;
   onBrowse: () => void;
 }
