@@ -44,96 +44,6 @@ export const CARD_SIZES =
 
 export const categories: Category[] = [
   {
-    id: "biodegradable",
-    name: "Biodegradable Products",
-    description: "Practical sustainable products for retailers looking for alternatives designed with reduced environmental impact in mind.",
-    image: photo('cat-biodegradable', 960, 644),
-    products: [
-      {
-        id: "bio-4",
-        name: "Plate",
-        description: "Eco-friendly biodegradable plates for sustainable dining.",
-        image: photo('bio-plate', 960, 861),
-        categoryId: "biodegradable"
-      },
-      {
-        id: "bio-5",
-        name: "Cutlery",
-        description: "Compostable cutlery sets made from plant-based materials.",
-        image: photo('bio-cutlery', 960, 641),
-        categoryId: "biodegradable"
-      },
-      {
-        id: "bio-6",
-        name: "Bowl",
-        description: "Sturdy biodegradable bowls perfect for takeaway and dining.",
-        image: photo('bio-bowl', 960, 644),
-        categoryId: "biodegradable"
-      },
-      {
-        id: "bio-7",
-        name: "Cups",
-        description: "Eco-friendly cups for hot and cold beverages.",
-        image: photo('bio-cups', 960, 643),
-        categoryId: "biodegradable"
-      },
-      {
-        id: "bio-catalog",
-        name: "Explore Our Full Range",
-        description: "We offer 10+ sustainable biodegradable products. Browse or download our complete catalog to find exactly what you need.",
-        image: photo('cat-biodegradable', 960, 644),
-        categoryId: "biodegradable",
-        type: "catalog",
-        catalogUrl: "/catalog/LuxoraGlobal_Biodegradable.pdf"
-      }
-    ]
-  },
-  {
-    id: "kitchenware",
-    name: "Kitchenware",
-    description: "Modern and practical kitchen products suitable for everyday retail needs.",
-    image: photo('cat-kitchenware', 960, 644),
-    products: [
-      {
-        id: "kw-1",
-        name: "Cups",
-        description: "Durable and stylish cups for everyday kitchen use.",
-        image: photo('kw-cups', 960, 640),
-        categoryId: "kitchenware"
-      },
-      {
-        id: "kw-2",
-        name: "Containers",
-        description: "Airtight storage containers to keep your kitchen organized.",
-        image: photo('kw-containers', 960, 640),
-        categoryId: "kitchenware"
-      },
-      {
-        id: "kw-4",
-        name: "Plastic Flower Pot with Saucer",
-        description: "Durable and lightweight plastic flower pots with built-in saucers. Perfect for flowers, herbs, succulents and more.",
-        image: photo('kw-flowerpot', 960, 761),
-        categoryId: "kitchenware"
-      },
-      {
-        id: "kw-5",
-        name: "Premium Square Plastic Water Bottle",
-        description: "Sleek and durable bottle for everyday use. Perfect for beverages, storage, and kitchen organization.",
-        image: photo('kw-bottle', 960, 592),
-        categoryId: "kitchenware"
-      },
-      {
-        id: "kw-catalog",
-        name: "Explore Our Full Range",
-        description: "We offer 10+ quality kitchenware products. Browse or download our complete catalog to find exactly what you need.",
-        image: photo('cat-kitchenware', 960, 644),
-        categoryId: "kitchenware",
-        type: "catalog",
-        catalogUrl: "/catalog/LuxoraGlobal_Kitchenware.pdf"
-      }
-    ]
-  },
-  {
     id: "automotive",
     name: "Industrial Components",
     description: "Automotive products and components designed for retailers serving everyday vehicle needs.",
@@ -184,6 +94,96 @@ export const categories: Category[] = [
         categoryId: "automotive",
         type: "catalog",
         catalogUrl: "/catalog/LuxoraGlobal_Tractorparts.pdf"
+      }
+    ]
+  },
+  {
+    id: "kitchenware",
+    name: "Kitchenware",
+    description: "Modern and practical kitchen products suitable for everyday retail needs.",
+    image: photo('cat-kitchenware', 960, 644),
+    products: [
+      {
+        id: "kw-1",
+        name: "Cups",
+        description: "Durable and stylish cups for everyday kitchen use.",
+        image: photo('kw-cups', 960, 640),
+        categoryId: "kitchenware"
+      },
+      {
+        id: "kw-2",
+        name: "Containers",
+        description: "Airtight storage containers to keep your kitchen organized.",
+        image: photo('kw-containers', 960, 640),
+        categoryId: "kitchenware"
+      },
+      {
+        id: "kw-4",
+        name: "Plastic Flower Pot with Saucer",
+        description: "Durable and lightweight plastic flower pots with built-in saucers. Perfect for flowers, herbs, succulents and more.",
+        image: photo('kw-flowerpot', 960, 761),
+        categoryId: "kitchenware"
+      },
+      {
+        id: "kw-5",
+        name: "Premium Square Plastic Water Bottle",
+        description: "Sleek and durable bottle for everyday use. Perfect for beverages, storage, and kitchen organization.",
+        image: photo('kw-bottle', 960, 592),
+        categoryId: "kitchenware"
+      },
+      {
+        id: "kw-catalog",
+        name: "Explore Our Full Range",
+        description: "We offer 10+ quality kitchenware products. Browse or download our complete catalog to find exactly what you need.",
+        image: photo('cat-kitchenware', 960, 644),
+        categoryId: "kitchenware",
+        type: "catalog",
+        catalogUrl: "/catalog/LuxoraGlobal_Kitchenware.pdf"
+      }
+    ]
+  },
+  {
+    id: "biodegradable",
+    name: "Biodegradable Products",
+    description: "Practical sustainable products for retailers looking for alternatives designed with reduced environmental impact in mind.",
+    image: photo('cat-biodegradable', 960, 644),
+    products: [
+      {
+        id: "bio-4",
+        name: "Plate",
+        description: "Eco-friendly biodegradable plates for sustainable dining.",
+        image: photo('bio-plate', 960, 861),
+        categoryId: "biodegradable"
+      },
+      {
+        id: "bio-5",
+        name: "Cutlery",
+        description: "Compostable cutlery sets made from plant-based materials.",
+        image: photo('bio-cutlery', 960, 641),
+        categoryId: "biodegradable"
+      },
+      {
+        id: "bio-6",
+        name: "Bowl",
+        description: "Sturdy biodegradable bowls perfect for takeaway and dining.",
+        image: photo('bio-bowl', 960, 644),
+        categoryId: "biodegradable"
+      },
+      {
+        id: "bio-7",
+        name: "Cups",
+        description: "Eco-friendly cups for hot and cold beverages.",
+        image: photo('bio-cups', 960, 643),
+        categoryId: "biodegradable"
+      },
+      {
+        id: "bio-catalog",
+        name: "Explore Our Full Range",
+        description: "We offer 10+ sustainable biodegradable products. Browse or download our complete catalog to find exactly what you need.",
+        image: photo('cat-biodegradable', 960, 644),
+        categoryId: "biodegradable",
+        type: "catalog",
+        catalogUrl: "/catalog/LuxoraGlobal_Biodegradable.pdf"
       }
     ]
   }

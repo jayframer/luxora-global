@@ -59,7 +59,9 @@
 
   .content-auto {
     content-visibility: auto;
-    contain-intrinsic-size: 1000px;
+    /* Remember the rendered size after first paint so offscreen sections
+       don't re-measure (and shift) every time they scroll back into view. */
+    contain-intrinsic-size: auto 1000px;
   }
 }
 

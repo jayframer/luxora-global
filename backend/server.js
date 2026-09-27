@@ -3,7 +3,7 @@ import cors from 'cors';
 import XLSX from 'xlsx';
 import crypto from 'crypto';
 import { fileURLToPath } from 'url';
-import { dirname, join } from 'path';
+import { dirname, join, sep } from 'path';
 import { existsSync, readFileSync, writeFileSync } from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -250,9 +250,23 @@ const ROOT_DIR = join(__dirname, '..');
 const DIST_DIR = join(ROOT_DIR, 'dist');
 const PUBLIC_DIR = join(ROOT_DIR, 'public');
 
-app.use(express.static(DIST_DIR));
-app.use(express.static(PUBLIC_DIR));
-app.use('/logo.png', express.static(join(__dirname, 'logo.png')));
+// Hashed build assets never change name, so cache them hard; images and
+// catalogs stay valid for a week; HTML must always revalidate.
+const cacheControlFor = (filePath) => {
+  if (filePath.endsWith('.html')) return 'no-cache';
+  if (filePath.includes(`${sep}assets${sep}`)) return 'public, max-age=31536000, immutable';
+  if (/\.(jpg|jpeg|png|webp|avif|svg|gif|ico)$/i.test(filePath)) {
+    return 'public, max-age=604800, stale-while-revalidate=86400';
+  }
+  if (filePath.includes(`${sep}catalog${sep}`)) return 'public, max-age=604800';
+  return 'public, max-age=86400';
+};
+
+const cacheHeaders = (res, filePath) => res.setHeader('Cache-Control', cacheControlFor(filePath));
+
+app.use(express.static(DIST_DIR, { setHeaders: cacheHeaders }));
+app.use(express.static(PUBLIC_DIR, { setHeaders: cacheHeaders }));
+app.use('/logo.png', express.static(join(__dirname, 'logo.png'), { setHeaders: cacheHeaders }));
 
 app.get('/robots.txt', (req, res) => {
   const robotsPath = join(PUBLIC_DIR, 'robots.txt');

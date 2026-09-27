@@ -46,10 +46,15 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
           </div>
 
           {/* Category Info */}
-          <div className="mb-16 max-w-3xl">
+          <motion.div
+            initial={{ opacity: 0, y: 16, filter: 'blur(3px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="mb-16 max-w-3xl"
+          >
             <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">{category.name}</h1>
             <p className="text-xl opacity-80 leading-relaxed">{category.description}</p>
-          </div>
+          </motion.div>
 
           {/* Product Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

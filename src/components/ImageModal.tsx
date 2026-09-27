@@ -51,6 +51,7 @@ export const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, src, al
             <img
               src={src}
               alt={alt}
+              decoding="async"
               className="w-full h-full object-contain rounded-lg"
             />
           </motion.div>
