@@ -28,11 +28,11 @@ export const RevealSection: React.FC<RevealSectionProps> = React.memo(({
   const { ref, isInView } = useScrollReveal();
 
   const initial = useMemo(
-    () => ({ opacity: 0, filter: 'blur(3px)', ...directionMap[direction] }),
+    () => ({ opacity: 0, ...directionMap[direction] }),
     [direction]
   );
   const animate = useMemo(() => isInView
-    ? { opacity: 1, y: 0, x: 0, filter: 'blur(0px)' }
+    ? { opacity: 1, y: 0, x: 0 }
     : initial, [isInView, initial]);
 
   const transition = useMemo(() => ({

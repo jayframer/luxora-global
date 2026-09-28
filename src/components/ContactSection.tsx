@@ -36,8 +36,7 @@ export const ContactSection: React.FC<ContactSectionProps & { className?: string
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-            className="will-change-transform"
-            style={{ transform: 'translateZ(0)' }}
+            className=""
           >
             <p className="eyebrow mb-5">06 / Contact</p>
             <h2 className="editorial-heading text-[clamp(2.5rem,5vw,4.5rem)] mb-6">
@@ -84,8 +83,7 @@ export const ContactSection: React.FC<ContactSectionProps & { className?: string
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.18, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-            className="flex flex-col justify-center will-change-transform"
-            style={{ transform: 'translateZ(0)' }}
+            className="flex flex-col justify-center"
           >
             <div className="bg-light-bg dark:bg-dark-bg p-8 rounded-xl border border-light-border dark:border-dark-border">
               <h3 className="editorial-heading text-2xl mb-6">Product Categories</h3>

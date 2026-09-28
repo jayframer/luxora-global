@@ -44,8 +44,7 @@ export const ProductsSection: React.FC<ProductsSectionProps> = ({ onCategorySele
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-          className="mb-14 flex flex-col justify-between gap-6 border-b border-light-border dark:border-dark-border pb-9 md:flex-row md:items-end will-change-transform"
-          style={{ transform: 'translateZ(0)' }}
+          className="mb-14 flex flex-col justify-between gap-6 border-b border-light-border dark:border-dark-border pb-9 md:flex-row md:items-end"
         >
           <div>
             <p className="eyebrow mb-5">01 / Products</p>

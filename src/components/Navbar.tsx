@@ -77,8 +77,8 @@ export const Navbar: React.FC = () => {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled
-        ? 'bg-light-bg/70 dark:bg-dark-bg/70 border-light-border/60 dark:border-dark-border/60 backdrop-blur-xl'
-        : 'bg-light-bg/30 dark:bg-dark-bg/30 border-transparent backdrop-blur-lg'
+        ? 'bg-light-bg/70 dark:bg-dark-bg/70 border-light-border/60 dark:border-dark-border/60 backdrop-blur-md'
+        : 'bg-light-bg/30 dark:bg-dark-bg/30 border-transparent backdrop-blur-md'
         }`}
     >
       <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 h-[78px] flex justify-between items-center relative">

@@ -38,8 +38,7 @@ export const Hero: React.FC<{ onExploreProducts: () => void; className?: string 
         initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
         animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
         transition={{ duration: 0.55, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-        className="relative z-10 max-w-[1600px] mx-auto w-full px-6 md:px-12 lg:px-16 will-change-transform"
-        style={{ transform: 'translateZ(0)' }}
+        className="relative z-10 max-w-[1600px] mx-auto w-full px-6 md:px-12 lg:px-16"
       >
         <div className="z-10">
             <motion.img
@@ -60,8 +59,7 @@ export const Hero: React.FC<{ onExploreProducts: () => void; className?: string 
               initial={{ opacity: 0, y: 32, filter: 'blur(8px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               transition={{ duration: 0.55, delay: 0.04, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-              className="editorial-heading max-w-[860px] text-[clamp(2.8rem,6.5vw,5.8rem)] mb-6 text-light-text dark:text-dark-text will-change-transform"
-              style={{ transform: 'translateZ(0)' }}
+              className="editorial-heading max-w-[860px] text-[clamp(2.8rem,6.5vw,5.8rem)] mb-6 text-light-text dark:text-dark-text"
             >
               Wholesale Products
               <br />
