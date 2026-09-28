@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { ThemeToggle } from './ThemeToggle';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useNavClick } from '../context/NavClickContext';
 import { useTheme } from '../context/ThemeContext';
@@ -76,13 +76,13 @@ export const Navbar: React.FC = () => {
 
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
-        ? 'bg-light-bg/90 dark:bg-dark-bg/90 border-b border-light-border/50 dark:border-dark-border/50 shadow-[0_4px_16px_rgba(0,0,0,0.06)] py-2'
-        : 'bg-transparent py-3'
+      className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled
+        ? 'bg-light-bg/70 dark:bg-dark-bg/70 border-light-border/60 dark:border-dark-border/60 backdrop-blur-xl'
+        : 'bg-light-bg/30 dark:bg-dark-bg/30 border-transparent backdrop-blur-lg'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-12 flex justify-between items-center relative">
-        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-3 sm:gap-5 shrink-0">
+      <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 h-[78px] flex justify-between items-center relative">
+        <a href="#home" onClick={(e) => handleNavClick(e, '#home')} className="flex items-center gap-3 shrink-0">
           <img
             src={theme === 'dark' ? logoDark : logo}
             alt="Luxora Global Logo"
@@ -91,39 +91,39 @@ export const Navbar: React.FC = () => {
             loading="eager"
             decoding="async"
             fetchPriority="high"
-            style={{ height: '44px', width: '44px' }}
-            className="object-contain sm:h-[60px] sm:w-[60px]"
+            style={{ height: '66px', width: '66px' }}
+            className="object-contain"
           />
-          <span className="text-sm sm:text-lg font-bold uppercase">Luxora Global</span>
+          <span className="text-[15px] sm:text-[17px] font-semibold tracking-tight leading-none">Luxora Global</span>
         </a>
 
-        <div className="hidden md:flex items-center justify-center flex-1 mx-8 space-x-8">
+        <div className="hidden md:flex items-center justify-center flex-1 mx-8 gap-10">
           {navLinks.map((link) => (
             <a
               key={link.name}
               href={link.href}
               onClick={(e) => handleNavClick(e, link.href)}
-              className={`nav-link text-sm font-medium opacity-80 hover:opacity-100 transition-opacity ${activeSection === link.href ? 'nav-link--active' : ''}`}
+              className={`nav-link text-[12px] font-medium opacity-80 hover:opacity-100 transition-opacity ${activeSection === link.href ? 'nav-link--active' : ''}`}
             >
               {link.name}
             </a>
           ))}
         </div>
 
-        <div className="hidden md:flex items-center space-x-4 shrink-0">
+        <div className="hidden md:flex items-center gap-3 shrink-0">
           <ThemeToggle />
           <motion.a
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+            whileHover={{ y: -1 }}
             href="#contact"
             onClick={(e) => handleNavClick(e, '#contact')}
-            className="text-sm font-medium border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg px-5 py-2 rounded-full transition-colors duration-300"
+            className="btn"
           >
             Send Inquiry
+            <ArrowUpRight className="w-4 h-4" />
           </motion.a>
         </div>
 
-        <div className="md:hidden flex items-center gap-3 shrink-0">
+        <div className="md:hidden flex items-center gap-2 shrink-0">
           <ThemeToggle />
           <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} aria-label="Toggle menu">
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -139,24 +139,24 @@ export const Navbar: React.FC = () => {
             exit={{ opacity: 0, y: -20 }}
             className="absolute top-full left-0 w-full bg-light-bg dark:bg-dark-bg border-b border-light-border dark:border-dark-border shadow-lg md:hidden"
           >
-            <div className="flex flex-col px-6 py-4 space-y-4">
+            <div className="flex flex-col px-6 py-4 gap-5">
               {navLinks.map((link) => (
                 <a
                   key={link.name}
                   href={link.href}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-lg font-medium py-2 border-b border-light-border/50 dark:border-dark-border/50 last:border-0"
+                  className="text-[15px] font-medium py-2 border-b border-light-border/50 dark:border-dark-border/50 last:border-0"
                 >
                   {link.name}
                 </a>
               ))}
               <motion.a
-                whileTap={{ scale: 0.95 }}
                 href="#contact"
                 onClick={(e) => handleNavClick(e, '#contact')}
-                className="text-center text-sm font-medium border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg px-5 py-3 rounded-full mt-4 transition-colors duration-300"
+                className="btn mt-3"
               >
                 Send Inquiry
+                <ArrowUpRight className="w-4 h-4" />
               </motion.a>
             </div>
           </motion.div>

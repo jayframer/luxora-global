@@ -8,10 +8,10 @@ export const ThemeToggle: React.FC = () => {
 
   return (
     <motion.button
-      whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.9 }}
+      whileHover={{ scale: 1.05 }}
+      whileTap={{ scale: 0.95 }}
       onClick={toggleTheme}
-      className="p-2 rounded-full hover:bg-light-border dark:hover:bg-dark-border transition-colors duration-200"
+      className="w-10 h-10 inline-flex items-center justify-center rounded-sm hover:bg-light-card dark:hover:bg-dark-card transition-colors duration-200"
       aria-label="Toggle theme"
     >
       {theme === 'light' ? (

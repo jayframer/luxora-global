@@ -3,19 +3,23 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  --color-light-bg: #F2EEE3;
-  --color-light-card: #E9E5D8;
-  --color-light-text: #1A1814;
-  --color-light-text-secondary: #2E2B24;
-  --color-light-border: rgba(0,0,0,0.12);
+  --color-light-bg: oklch(99.5% 0.002 85);
+  --color-light-card: oklch(100% 0 0);
+  --color-light-text: oklch(19% 0.008 70);
+  --color-light-text-secondary: oklch(39% 0.008 70);
+  --color-light-muted: oklch(48% 0.007 70);
+  --color-light-accent: oklch(91% 0.012 155);
+  --color-light-border: oklch(87% 0.005 80);
 
-  --color-dark-bg: #0D0D0D;
-  --color-dark-card: #171717;
-  --color-dark-text: #F5F3ED;
-  --color-dark-text-secondary: #A7A7A7;
-  --color-dark-border: rgba(255,255,255,0.10);
+  --color-dark-bg: oklch(16% 0.008 240);
+  --color-dark-card: oklch(21% 0.008 240);
+  --color-dark-text: oklch(96% 0.004 80);
+  --color-dark-text-secondary: oklch(69% 0.007 80);
+  --color-dark-muted: oklch(69% 0.007 80);
+  --color-dark-accent: oklch(39% 0.035 170);
+  --color-dark-border: oklch(34% 0.007 240);
 
-  --font-sans: 'Inter', sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 @layer base {
@@ -74,13 +78,13 @@
   content: '';
   position: absolute;
   left: 0;
-  bottom: -4px;
+  bottom: -6px;
   width: 100%;
-  height: 2px;
+  height: 1px;
   background-color: currentColor;
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.38s cubic-bezier(0.21, 0.47, 0.32, 0.98);
+  transition: transform 0.4s cubic-bezier(0.21, 0.47, 0.32, 0.98);
 }
 
 .nav-link:hover::after {
@@ -113,12 +117,161 @@
   }
 }
 
-/* Product card bolder hover border */
+/* Product card: quiet border shift instead of a heavy outline */
 .product-card {
   border-width: 1px;
-  transition: border-width 0.28s ease, border-color 0.28s ease, transform 0.3s ease, box-shadow 0.28s ease;
+  transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
-  border-width: 2.5px;
+  border-color: var(--color-light-text);
+  box-shadow: 0 24px 60px -45px rgba(0, 0, 0, 0.5);
+}
+
+.dark .product-card:hover {
+  border-color: var(--color-dark-text);
+}
+
+/* ---------------------------------------------------------------------------
+   Editorial primitives shared with the reference design system
+   --------------------------------------------------------------------------- */
+
+.editorial-heading {
+  font-weight: 400;
+  line-height: 1.04;
+  letter-spacing: -0.015em;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-light-muted);
+}
+
+.dark .eyebrow {
+  color: var(--color-dark-muted);
+}
+
+/* Square, uppercase outline button */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  height: 3rem;
+  padding-inline: 1.5rem;
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  background: transparent;
+  color: var(--color-light-text);
+  cursor: pointer;
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+}
+
+.btn:hover {
+  background-color: var(--color-light-text);
+  color: var(--color-light-card);
+}
+
+.dark .btn {
+  color: var(--color-dark-text);
+}
+
+.dark .btn:hover {
+  background-color: var(--color-dark-text);
+  color: var(--color-dark-bg);
+}
+
+.btn--solid {
+  background-color: var(--color-light-text);
+  color: var(--color-light-card);
+}
+
+.btn--solid:hover {
+  background-color: transparent;
+  color: var(--color-light-text);
+}
+
+.dark .btn--solid {
+  background-color: var(--color-dark-text);
+  color: var(--color-dark-bg);
+}
+
+.dark .btn--solid:hover {
+  background-color: transparent;
+  color: var(--color-dark-text);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn:disabled:hover {
+  background-color: transparent;
+  color: var(--color-light-text);
+}
+
+.btn--solid:disabled:hover {
+  background-color: var(--color-light-text);
+  color: var(--color-light-card);
+}
+
+.dark .btn:disabled:hover {
+  background-color: transparent;
+  color: var(--color-dark-text);
+}
+
+.dark .btn--solid:disabled:hover {
+  background-color: var(--color-dark-text);
+  color: var(--color-dark-bg);
+}
+
+/* Underlined uppercase text link with a widening arrow gap */
+.link-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid currentColor;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  transition: gap 0.3s ease, opacity 0.3s ease;
+}
+
+.link-cta:hover {
+  gap: 1.25rem;
+}
+
+/* White (filled) button that flips to black on hover — used by the inquiry CTA */
+.btn--light {
+  background-color: var(--color-light-card);
+  color: var(--color-light-text);
+  border-color: var(--color-light-border);
+}
+
+.btn--light:hover {
+  background-color: var(--color-light-text);
+  color: var(--color-light-card);
+  border-color: var(--color-light-text);
+}
+
+.dark .btn--light {
+  background-color: var(--color-dark-card);
+  color: var(--color-dark-text);
+  border-color: var(--color-dark-border);
+}
+
+.dark .btn--light:hover {
+  background-color: var(--color-dark-text);
+  color: var(--color-dark-bg);
+  border-color: var(--color-dark-text);
 }

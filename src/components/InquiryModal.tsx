@@ -105,15 +105,15 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 20 }}
-          className="relative w-full max-w-2xl bg-light-card dark:bg-dark-card rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+          className="relative w-full max-w-2xl bg-light-card dark:bg-dark-card rounded-xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
         >
           <div className="flex justify-between items-center p-6 border-b border-light-border dark:border-dark-border">
-            <h2 className="text-2xl font-bold">Send an Inquiry</h2>
+            <h2 className="editorial-heading text-[1.75rem]">Send an Inquiry</h2>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-light-border dark:hover:bg-dark-border transition-colors"
+              className="w-9 h-9 inline-flex items-center justify-center rounded-sm hover:bg-light-bg dark:hover:bg-dark-bg transition-colors"
             >
               <X className="w-5 h-5" />
             </motion.button>
@@ -127,15 +127,15 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Inquiry received</h3>
-                <p className="text-lg opacity-70 mb-8">
+                <h3 className="editorial-heading text-[1.75rem] mb-4">Inquiry received</h3>
+                <p className="text-[15px] leading-[1.8] opacity-70 mb-8">
                   Thank you for your inquiry. Our team will contact you shortly.
                 </p>
                 <motion.button
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                   onClick={onClose}
-                  className="px-8 py-3 border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg rounded-full font-medium transition-colors duration-300"
+                  className="btn"
                 >
                   Close
                 </motion.button>
@@ -262,7 +262,7 @@ export const InquiryModal: React.FC<InquiryModalProps> = ({
                     whileTap={{ scale: 0.95 }}
                     type="submit"
                     disabled={status === 'loading'}
-                    className="px-8 py-3 border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg rounded-full font-medium transition-colors duration-300 disabled:opacity-50 disabled:hover:bg-transparent disabled:hover:text-light-text dark:disabled:hover:bg-transparent dark:disabled:hover:text-dark-text"
+                    className="btn btn--solid w-full sm:w-auto"
                   >
                     {status === 'loading' ? 'Sending...' : 'Submit Inquiry'}
                   </motion.button>

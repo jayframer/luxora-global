@@ -64,7 +64,7 @@ function App() {
           <InquiryCTA className="content-auto" />
         </RevealSection>
         <RevealSection delay={0.1} direction="right">
-          <ContactSection onOpenInquiry={handleOpenInquiryFromContact} className="content-auto" />
+          <ContactSection onOpenInquiry={handleOpenInquiryFromContact} onCategorySelect={handleCategorySelect} className="content-auto" />
         </RevealSection>
         <RevealSection delay={0.1}>
           <Footer className="content-auto" />

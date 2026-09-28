@@ -23,7 +23,7 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
         transition={{ type: "spring", damping: 25, stiffness: 200 }}
         className="fixed inset-0 z-[60] bg-light-bg dark:bg-dark-bg overflow-y-auto"
       >
-        <div className="max-w-7xl mx-auto px-6 md:px-12 py-12">
+        <div className="max-w-[1600px] mx-auto px-6 md:px-12 lg:px-16 py-12">
           {/* Header */}
           <div className="flex justify-between items-center mb-12">
             <motion.button
@@ -39,7 +39,7 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-light-border dark:hover:bg-dark-border transition-colors"
+              className="w-9 h-9 inline-flex items-center justify-center rounded-sm hover:bg-light-bg dark:hover:bg-dark-bg transition-colors"
             >
               <X className="w-6 h-6" />
             </motion.button>
@@ -52,8 +52,8 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
             transition={{ duration: 0.5, delay: 0.15 }}
             className="mb-16 max-w-3xl"
           >
-            <h1 className="text-4xl md:text-6xl font-bold tracking-tight mb-6">{category.name}</h1>
-            <p className="text-xl opacity-80 leading-relaxed">{category.description}</p>
+            <h1 className="editorial-heading text-[clamp(2.5rem,5vw,4rem)] mb-6">{category.name}</h1>
+            <p className="text-[15px] leading-[1.8] opacity-80">{category.description}</p>
           </motion.div>
 
           {/* Product Grid */}
@@ -83,7 +83,7 @@ export const CategoryDetail: React.FC<CategoryDetailProps> = ({ category, onClos
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => onOpenInquiry()}
-              className="px-8 py-4 border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg rounded-full font-medium transition-colors duration-300"
+              className="btn"
             >
               Send Custom Inquiry
             </motion.button>
@@ -101,7 +101,7 @@ const ProductCard: React.FC<{ product: Product; index: number; onInquire: () => 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: index * 0.1 }}
-        className="bg-light-card dark:bg-dark-card rounded-3xl overflow-hidden border border-light-border dark:border-white/50 flex flex-col h-full"
+        className="group bg-light-card dark:bg-dark-card rounded-xl overflow-hidden border border-light-border dark:border-dark-border flex flex-col h-full"
       >
         <div className="relative h-72 bg-light-border dark:bg-dark-border overflow-hidden">
           <img
@@ -113,17 +113,17 @@ const ProductCard: React.FC<{ product: Product; index: number; onInquire: () => 
             alt={product.name}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.05]"
           />
         </div>
         <div className="p-5 flex-1 flex flex-col">
-          <h3 className="text-base font-bold mb-1">{product.name}</h3>
+          <h3 className="text-[15px] font-semibold mb-1">{product.name}</h3>
           <p className="text-xs opacity-70 mb-4 flex-1">{product.description}</p>
           <motion.button
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={onInquire}
-            className="w-full py-3 border border-light-text text-light-text hover:bg-light-text hover:text-light-bg dark:border-dark-text dark:text-dark-text dark:hover:bg-dark-text dark:hover:text-dark-bg rounded-xl font-medium transition-colors duration-300"
+            className="btn w-full h-11"
           >
             Send Inquiry
           </motion.button>

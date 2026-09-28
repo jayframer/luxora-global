@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useNavClick } from '../context/NavClickContext';
-import { BackgroundIcons, processIcons } from './BackgroundIcons';
 
 const stepVariants = {
   hidden: { opacity: 0, y: 36 },
@@ -16,10 +15,10 @@ const stepVariants = {
 };
 
 const lineVariants = {
-  hidden: { scaleX: 0, originX: 0 },
+  hidden: { opacity: 0 },
   visible: {
-    scaleX: 1,
-    transition: { duration: 1, delay: 0.3, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] },
+    opacity: 1,
+    transition: { duration: 0.6, delay: 0.2, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] },
   },
 };
 
@@ -46,22 +45,24 @@ export const ProcessSection: React.FC<{ className?: string }> = ({ className }) 
   ];
 
   return (
-    <section id="process" className={`relative py-24 px-6 md:px-12 bg-light-bg dark:bg-dark-bg overflow-hidden ${className || ''}`}>
-      <BackgroundIcons icons={processIcons} />
-      <div className="max-w-7xl mx-auto">
+    <section id="process" className={`relative py-24 px-6 md:px-12 lg:px-16 bg-light-bg dark:bg-dark-bg overflow-hidden ${className || ''}`}>
+      <div className="max-w-[1600px] mx-auto">
         <motion.div
           key={sectionKey}
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-          className="mb-16 will-change-transform"
+          className="mb-14 flex flex-col justify-between gap-6 border-b border-light-border dark:border-dark-border pb-9 md:flex-row md:items-end will-change-transform"
           style={{ transform: 'translateZ(0)' }}
         >
-          <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-4">
-            How It Works
-          </h2>
-          <p className="text-lg opacity-70">
+          <div>
+            <p className="eyebrow mb-5">04 / Process</p>
+            <h2 className="editorial-heading text-[clamp(2.5rem,4.5vw,4.5rem)]">
+              How It Works
+            </h2>
+          </div>
+          <p className="max-w-sm text-[15px] leading-[1.8] opacity-70 md:text-right">
             A simple process from inquiry to wholesale supply.
           </p>
         </motion.div>
@@ -72,31 +73,23 @@ export const ProcessSection: React.FC<{ className?: string }> = ({ className }) 
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           transition={{ staggerChildren: 0.18 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-12 relative"
+          className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-12 relative"
         >
-          <motion.div
-            variants={lineVariants}
-            className="hidden md:block absolute top-8 left-0 w-full h-[1px] bg-light-border dark:bg-dark-border z-0"
-          />
-
           {steps.map((step, index) => (
             <motion.div
               key={index}
               variants={stepVariants}
-              className="relative z-10"
+              className="relative z-10 border-t border-light-border dark:border-dark-border pt-6"
             >
               <motion.div
-                initial={{ scale: 0, rotate: -15 }}
-                whileInView={{ scale: 1, rotate: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
-                transition={{ duration: 0.5, delay: index * 0.18 + 0.3, ease: [0.21, 0.47, 0.32, 0.98] as [number, number, number, number] }}
-                className="w-16 h-16 rounded-full bg-light-bg dark:bg-dark-bg border border-light-border dark:border-dark-border flex items-center justify-center text-xl font-bold mb-6 will-change-transform"
+                variants={lineVariants}
+                className="eyebrow mb-6 will-change-transform"
                 style={{ transform: 'translateZ(0)' }}
               >
-                {step.num}
+                {step.num} / 03
               </motion.div>
-              <h3 className="text-2xl font-bold mb-3">{step.title}</h3>
-              <p className="text-sm opacity-70 leading-relaxed">
+              <h3 className="editorial-heading text-2xl md:text-[2rem] mb-3">{step.title}</h3>
+              <p className="text-[15px] leading-[1.8] opacity-70">
                 {step.desc}
               </p>
             </motion.div>

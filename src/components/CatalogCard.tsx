@@ -26,10 +26,10 @@ export const CatalogCard: React.FC<CatalogCardProps> = ({ product, index }) => {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="bg-light-card dark:bg-dark-card rounded-3xl overflow-hidden border border-light-border dark:border-white/50 flex flex-col items-center justify-center h-full p-6"
+      className="bg-light-card dark:bg-dark-card rounded-xl overflow-hidden border border-light-border dark:border-dark-border flex flex-col items-center justify-center h-full p-6"
     >
       <div className="flex-1 flex flex-col items-center justify-center">
-        <h3 className="text-3xl font-bold mb-6 text-center">{product.name}</h3>
+        <h3 className="editorial-heading text-3xl mb-6 text-center">{product.name}</h3>
         <p className="text-lg opacity-70 text-center">{product.description}</p>
       </div>
       <div className="w-full">

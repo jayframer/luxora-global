@@ -1,7 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { ShieldCheck, Package, MessageSquare, Grid } from 'lucide-react';
-import { BackgroundIcons, whyChooseIcons } from './BackgroundIcons';
 
 const features = [
   {
@@ -28,22 +27,22 @@ const features = [
 
 export const WhyChooseUs: React.FC<{ className?: string }> = React.memo(({ className }) => {
   return (
-    <section className={`relative py-24 px-6 md:px-12 ${className || ''}`}>
-      <BackgroundIcons icons={whyChooseIcons} />
-      <div className="max-w-7xl mx-auto">
+    <section className={`relative py-24 px-6 md:px-12 lg:px-16 ${className || ''}`}>
+      <div className="max-w-[1600px] mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.5 }}
-          className="mb-16 text-center"
+          className="mb-14 border-b border-light-border dark:border-dark-border pb-9"
         >
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight">
+          <p className="eyebrow mb-5">02 / Why Luxora Global</p>
+          <h2 className="editorial-heading text-[clamp(2.5rem,4.5vw,4.5rem)]">
             Why Retailers Choose Luxora Global
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 md:gap-12">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -51,11 +50,11 @@ export const WhyChooseUs: React.FC<{ className?: string }> = React.memo(({ class
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex flex-col items-center text-center md:items-start md:text-left"
+              className="flex flex-col items-start text-left border-t border-light-border dark:border-dark-border pt-6"
             >
               {feature.icon}
-              <h3 className="text-lg font-bold mb-3">{feature.title}</h3>
-              <p className="text-sm opacity-70 leading-relaxed">
+              <h3 className="editorial-heading text-xl mb-3">{feature.title}</h3>
+              <p className="text-[15px] leading-[1.8] opacity-70">
                 {feature.description}
               </p>
             </motion.div>
